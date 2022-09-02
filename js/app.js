@@ -1,3 +1,5 @@
+    /* ---------------------------------------
+    --------------------------------------- */
 const loadPhones = async(searchText) => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     const res = await fetch(url);
@@ -9,10 +11,20 @@ const displayPhones = phones => {
     // console.log(phones);
     const phonesContaienr = document.getElementById('phones-container');
     phonesContaienr.textContent =``;
-    // display 20 phone only
-    phones = phones.slice(0,20);
-
-    // display no phone found
+    /* ---------------------------------------
+        display 6 phone only
+    --------------------------------------- */
+    const showAll = document.getElementById('show-all');
+    if(phones.length > 6){
+        phones = phones.slice(0, 6);
+        showAll.classList.remove('d-none');
+    }
+    else{
+        showAll.classList.add('d-none');
+    }
+    /* ---------------------------------------
+        display no phone found
+    --------------------------------------- */
     const noPhone = document.getElementById('no-found-message');
     if(phones.length === 0){
         noPhone.classList.remove('d-none');
@@ -20,8 +32,9 @@ const displayPhones = phones => {
     else{
         noPhone.classList.add('d-none');
     }
-
-    // display all phones
+    /* ---------------------------------------
+        display all phones
+    --------------------------------------- */
     phones.forEach(phone => {
         const colDiv = document.createElement('div');
         colDiv.classList.add('col');
