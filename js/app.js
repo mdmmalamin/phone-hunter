@@ -113,6 +113,11 @@ const loadPhoneDetails = async id => {
     
 --------------------------------------- */
 const displayPhoneDetails = phone => {
+    // const phoneSensors = phone.mainFeatures.sensors;
+    // for(const sensor of phoneSensors){
+    //     console.log(phoneSensors);
+    // }
+
     console.log(phone);
     const modalTitle = document.getElementById('phoneDetailsModalLabel');
     modalTitle.innerText = phone.name;
@@ -120,7 +125,9 @@ const displayPhoneDetails = phone => {
     phoneDetails.innerHTML = `
         <p>Release Date: ${phone.releaseDate ? phone.releaseDate : 'Not Found!'}</p>
         <p>Storage: ${phone.mainFeatures.memory ? phone.mainFeatures.storage : 'Not Found!'}</p>
-        <p>Bluetooth: ${phone.others.bluetooth ? phone.others.bluetooth : 'Not Found!'}</p>
+
+        <p>Bluetooth: ${phone.others?.Bluetooth ? phone.others.Bluetooth : 'Not Found!'}</p>
+
         <p>Display size: ${phone.mainFeatures.displaySize ? phone.mainFeatures.displaySize : 'Not Found!'}</p>
         <p>sensors: ${phone.mainFeatures.sensors ? phone.mainFeatures.sensors : 'Not Found!'}</p>
     `;
